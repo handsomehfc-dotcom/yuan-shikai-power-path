@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>袁世凱：一步一步｜中三中史文字模擬 v2</title>
+<style>
+  :root{--bg:#f5f1ea;--card:#fffdfa;--ink:#202326;--muted:#62666a;--line:#d8d0c6;--accent:#174d6f;--accent2:#d8e9f2;--fact:#086b9d;--factbg:#e8f5fb;--dispute:#986000;--disputebg:#fff5d9;--sim:#68419b;--simbg:#f3ecfb;--event:#a9342b;--eventbg:#ffefec;--ok:#25683d;--warn:#8b4b14}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);font-family:"Noto Sans CJK TC","Microsoft JhengHei",system-ui,sans-serif;color:var(--ink);line-height:1.58}
+  .wrap{max-width:860px;margin:auto;padding:20px 14px 64px} header{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+  h1{font-size:29px;margin:0 0 4px;line-height:1.2} h2{font-size:23px;margin:2px 0 10px} h3{font-size:18px;margin:15px 0 6px}.sub,.mini{color:var(--muted);font-size:13px}
+  .progress{position:sticky;top:0;z-index:4;background:rgba(245,241,234,.95);backdrop-filter:blur(6px);padding:8px 0 10px;margin-bottom:8px}.bar{height:8px;background:#e2dbd1;border-radius:999px;overflow:hidden}.fill{height:100%;width:0;background:var(--accent);transition:.3s}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin:12px 0;box-shadow:0 5px 20px rgba(0,0,0,.045)}
+  .tag,.chip{display:inline-block;padding:3px 8px;border-radius:999px;font-weight:750;font-size:12px}.tag{margin-bottom:8px}.fact{color:var(--fact);background:var(--factbg)}.dispute{color:var(--dispute);background:var(--disputebg)}.sim{color:var(--sim);background:var(--simbg)}.event{color:var(--event);background:var(--eventbg)}
+  .context{background:#faf7f1;border-left:4px solid #aa9d8d;padding:11px 13px;margin:12px 0;border-radius:8px}.question{background:#eef5f8;border-left:4px solid var(--accent);padding:12px 14px;margin:14px 0;border-radius:8px;font-weight:700}.prompt{border:1px dashed #917bae;background:#fbf8ff;padding:10px 12px;border-radius:10px;margin:12px 0;font-weight:650}
+  .choice{width:100%;text-align:left;background:white;border:1px solid #cfc6ba;border-radius:12px;padding:13px 14px;margin:7px 0;cursor:pointer;font:inherit;color:inherit;transition:.15s}.choice:hover{border-color:#6a8799;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.06)}.choice strong{display:block;margin-bottom:2px}.choice small{color:var(--muted);font-size:13px}
+  button.next{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:10px 16px;font:inherit;font-weight:750;cursor:pointer;margin-top:12px}button.ghost{background:transparent;border:1px solid #999;border-radius:10px;padding:9px 14px;font:inherit;cursor:pointer}
+  .impact{margin:12px 0;padding:12px;background:#f2f4f2;border-radius:10px}.route{border-left:4px solid var(--accent);padding-left:14px;margin:12px 0}.step{margin:10px 0}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.compare{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}.compare h3{margin-top:0}.row{padding:9px 0;border-bottom:1px solid #e7e0d8}.row:last-child{border-bottom:0}.arrow{color:var(--accent);font-weight:800}.status{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.easy{background:#e7f4ea;color:var(--ok)}.hard{background:#fff0e5;color:var(--warn)}.mid{background:#eceff1;color:#454c51}.legend{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+  .people{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.person{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}.person b{display:block;color:var(--accent)}
+  .limits{margin:14px 0}.limits h3{margin:0 0 8px;font-size:16px}.limit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.limit-card{border:2px solid;border-radius:12px;padding:11px;background:#fff}.limit-card b{display:block;font-size:14px;margin-bottom:3px}.limit-card span{font-weight:800}.limit-strong{border-color:#3f7896;background:#eaf5fa;color:#174d6f}.limit-mid{border-color:#d29433;background:#fff7df;color:#82540d}.limit-low{border-color:#b6574f;background:#fff0ee;color:#862f29}.resultbox{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}.resultbox h3{margin:0 0 5px;font-size:17px;color:var(--accent)}
+  .resistance{border:2px solid #b16c35;background:#fff7ed;border-radius:12px;padding:13px;margin:12px 0;font-size:18px;font-weight:800}.attempt{background:#762f2a!important}.outcome{border:2px solid var(--accent);background:#f4f9fb;border-radius:12px;padding:14px;margin:12px 0}.outcome h3{margin-top:0}.attempt-result{border-radius:12px;padding:14px;margin:12px 0;font-size:20px;font-weight:900}.attempt-success{background:#e8f5ec;border:2px solid #39734d;color:#245b37}.attempt-partial{background:#fff6da;border:2px solid #c58a26;color:#7d5209}.attempt-failure{background:#ffefed;border:2px solid #b7544b;color:#812e28}
+  .identity{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}.identity label{font-weight:750}.identity select{display:block;width:100%;margin-top:5px;padding:11px;border:1px solid #b8afa5;border-radius:9px;background:#fff;font:inherit}.sync{min-height:18px;color:var(--muted);font-size:11px;margin-top:2px}.checkpoint{border:2px solid #7c63a4;background:#f8f3ff;border-radius:12px;padding:14px;margin:14px 0}.checkpoint b{display:block;color:#583286;margin-bottom:4px}.stop{border:2px solid #ad7135;background:#fff7e8;border-radius:12px;padding:14px;margin:14px 0}.teacher-table{width:100%;border-collapse:collapse;font-size:12px}.teacher-table th,.teacher-table td{border:1px solid var(--line);padding:6px;text-align:left}.teacher-table th{background:#e9f1f5}
+  .footer-note{font-size:12px;color:#747474;margin-top:20px;border-top:1px solid var(--line);padding-top:12px}
+  @media(max-width:620px){h1{font-size:24px}.card{padding:16px}.two,.people,.limit-grid,.identity{grid-template-columns:1fr}}
+  @media print{.progress,.next,.ghost{display:none!important}body{background:#fff}.card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body><div class="wrap">
+<header><div><h1>袁世凱：一步一步</h1><div class="sub">中三中國歷史｜文字分支模擬 v2</div><div id="syncStatus" class="sync"></div></div><button class="ghost" onclick="restart()">重新開始</button></header>
+<div class="progress"><div class="bar"><div id="fill" class="fill"></div></div><div id="progtext" class="mini" style="margin-top:4px">開始</div></div>
+<main id="app"></main>
+<div class="footer-note">主要史實依據：課本《中華民國》「民初軍閥政治」第19至23頁。模擬選項用來理解因果與政治條件，不代表袁世凱當時實際擁有這份選單；模擬後果亦不是對另一段歷史的斷言。</div>
+</div><script>
+// 老師只需要把Google Apps Script Web App網址貼在下一行。
+const DATA_ENDPOINT = "";
+const CLASS_OPTIONS = ['3A','3B','3C','3D'];
+const DATA_QUEUE_KEY='yuan_power_path_queue_v1',DATA_LOCAL_KEY='yuan_power_path_local_v1',IDENTITY_KEY='yuan_power_path_identity_v1';
+const S={d1:null,d2:null,d3:null,d4:null,resources:0,control:0,checks:2,conflict:0,local:1,log:[]};
+const STUDENT={classCode:'',seatNumber:'',sessionId:getSessionId()};
+let decisionStartedAt=Date.now(),decisionStage='',completionSent=false,sending=false;
+const app=document.getElementById('app');
+const stages=['序幕','宋教仁事件','D1 善後大借款','D2與二次革命','D3 國會','D4 臨時約法','1915 帝制嘗試','模擬結果','真實歷史'];
+function progress(n){document.getElementById('fill').style.width=(n/(stages.length-1)*100)+'%';document.getElementById('progtext').textContent=stages[n]}
+function card(cls,tag,title,body){const badge=(tag==='你的模擬結果'||tag==='真實歷史中的袁世凱')?`<span class="tag ${cls}">【${tag}】</span>`:'';return `<section class="card">${badge}<h2>${title}</h2>${body}</section>`}
+function set(html,n){app.innerHTML=html;progress(n);window.scrollTo({top:0,behavior:'smooth'})}
+function next(label,fn){return `<button class="next" onclick="${fn}">${label}</button>`}
+function choice(code,title,desc,fn){return `<button class="choice" onclick="handleChoice('${fn}','${code}')"><strong>${code}｜${title}</strong><small>${desc}</small></button>`}
+function currentDecisionResistance(){if(decisionStage==='D2')return d2Resistance();if(decisionStage==='D3')return d3Resistance();if(decisionStage==='D4')return d4Resistance();return ''}
+function handleChoice(fn,code){const previous=snapshotState(),time=decisionTime(),resistance=currentDecisionResistance(),stage=decisionStage;if(fn==='pickD1')pickD1(code);else if(fn==='pickD2')pickD2(code);else if(fn==='pickD3')pickD3(code);else if(fn==='pickD4')pickD4(code);else return;recordEvent('decision',stage,code,previous,snapshotState(),resistance,'in_progress',time)}
+function uid(){try{return crypto.randomUUID()}catch(e){return 's-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)}}
+function getSessionId(){try{let id=sessionStorage.getItem('yuan_power_path_session');if(!id){id=uid();sessionStorage.setItem('yuan_power_path_session',id)}return id}catch(e){return uid()}}
+function readJSON(key,fallback){try{return JSON.parse(localStorage.getItem(key)||'null')||fallback}catch(e){return fallback}}
+function writeJSON(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(e){}}
+function snapshotState(){return {d1:S.d1,d2:S.d2,d3:S.d3,d4:S.d4,resources:S.resources,control:S.control,checks:S.checks,conflict:S.conflict,local:S.local}}
+function beginDecision(stage){decisionStage=stage;decisionStartedAt=Date.now()}
+function decisionTime(){return Math.max(0,Date.now()-decisionStartedAt)}
+function setSync(text){const el=document.getElementById('syncStatus');if(el)el.textContent=text||''}
+function recordEvent(eventType,stage,choiceValue,previousState,resultState,resistance,completionStatus,timeMs){
+  if(!STUDENT.classCode||!STUDENT.seatNumber)return;
+  const event={event_id:uid(),timestamp:new Date().toISOString(),class:STUDENT.classCode,seat_number:STUDENT.seatNumber,session_id:STUDENT.sessionId,event_type:eventType,stage,choice:choiceValue||'',previous_state:previousState||{},result_state:resultState||{},current_resistance:resistance||'',completion_status:completionStatus||'in_progress',decision_time_ms:Number(timeMs)||0};
+  const local=readJSON(DATA_LOCAL_KEY,[]);local.push(event);writeJSON(DATA_LOCAL_KEY,local.slice(-300));
+  if(DATA_ENDPOINT){const queue=readJSON(DATA_QUEUE_KEY,[]);queue.push(event);writeJSON(DATA_QUEUE_KEY,queue.slice(-300));flushQueue()}
+}
+async function flushQueue(){
+  if(sending||!DATA_ENDPOINT)return;
+  const queue=readJSON(DATA_QUEUE_KEY,[]);if(!queue.length){setSync('');return}
+  sending=true;setSync('紀錄同步中');
+  try{while(queue.length){await fetch(DATA_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(queue[0]),keepalive:true});queue.shift();writeJSON(DATA_QUEUE_KEY,queue)}setSync('')}
+  catch(e){writeJSON(DATA_QUEUE_KEY,queue);setSync('')}
+  finally{sending=false}
+}
+function isTeacherMode(){try{return new URLSearchParams(window.location.search).get('teacher')==='1'}catch(e){return false}}
+function identityScreen(){
+  const saved=readJSON(IDENTITY_KEY,{});const classes=CLASS_OPTIONS.map(x=>`<option value="${x}" ${saved.classCode===x?'selected':''}>${x}</option>`).join('');const seats=Array.from({length:40},(_,i)=>String(i+1).padStart(2,'0')).map(x=>`<option value="${x}" ${saved.seatNumber===x?'selected':''}>${x}</option>`).join('');
+  set(card('fact','已核證史實','開始前',`<p>請選擇班別及座號，然後開始遊戲。</p><div class="identity"><label>班別<select id="classInput"><option value="">請選擇</option>${classes}</select></label><label>座號<select id="seatInput"><option value="">請選擇</option>${seats}</select></label></div><p id="identityError" class="mini"></p><button class="next" onclick="saveIdentityAndStart()">開始遊戲</button>`),0)
+}
+function saveIdentityAndStart(){const c=document.getElementById('classInput').value,s=document.getElementById('seatInput').value;if(!CLASS_OPTIONS.includes(c)||!/^(0[1-9]|[1-3][0-9]|40)$/.test(s)){document.getElementById('identityError').textContent='請選擇班別及座號。';return}STUDENT.classCode=c;STUDENT.seatNumber=s;writeJSON(IDENTITY_KEY,{classCode:c,seatNumber:s});recordEvent('session_start','START','',{},snapshotState(),'','in_progress',0);start()}
+function teacherScreen(){const rows=readJSON(DATA_LOCAL_KEY,[]),endpoint=DATA_ENDPOINT?'已設定':'未設定';const body=rows.slice(-30).reverse().map(e=>`<tr><td>${e.class}</td><td>${e.seat_number}</td><td>${e.stage}</td><td>${e.choice||'-'}</td><td>${e.current_resistance||'-'}</td></tr>`).join('');set(card('fact','已核證史實','教師模式｜本機測試資料',`<p><b>DATA endpoint：</b>${endpoint}　<b>本機事件：</b>${rows.length}</p><p class="mini">只顯示這部裝置的測試資料；全班資料請到Google Sheet查看。</p><table class="teacher-table"><thead><tr><th>班別</th><th>座號</th><th>階段</th><th>選擇</th><th>阻力</th></tr></thead><tbody>${body||'<tr><td colspan="5">暫無本機資料</td></tr>'}</tbody></table><button class="ghost" onclick="clearLocalTestData()">清除本機測試資料</button>`),0)}
+function clearLocalTestData(){try{localStorage.removeItem(DATA_LOCAL_KEY);localStorage.removeItem(DATA_QUEUE_KEY)}catch(e){}teacherScreen()}
+function consequence(done,later){return `<div class="two"><div class="resultbox"><h3>今次你做到咩？</h3><p>${done}</p></div><div class="resultbox"><h3>同時，之後有咩改變？</h3><p>${later}</p></div></div>`}
+function limitCard(label,value,level){return `<div class="limit-card limit-${level}"><b>${label}</b><span>${value}</span></div>`}
+function limitsPanel(){let local='仍有較強作用',localLevel='strong',parliament='仍有較強作用',parliamentLevel='strong',rules='仍有較強作用',rulesLevel='strong';if(S.d2==='B'){local='受到部分削弱';localLevel='mid'}if(S.d2==='C'){local='作用明顯下降';localLevel='low'}if(S.d3==='B'){parliament='受到部分削弱';parliamentLevel='mid'}else if(S.d3==='C'){parliament='作用明顯下降';parliamentLevel='low'}else if(!S.d3&&S.d1==='C'){parliament='實際作用受到挑戰';parliamentLevel='mid'}if(S.d4==='B'){rules='受到部分削弱';rulesLevel='mid'}if(S.d4==='C'){rules='作用明顯下降';rulesLevel='low'}return `<div class="limits"><h3>目前仍有作用的限制</h3><div class="limit-grid">${limitCard('地方政治力量',local,localLevel)}${limitCard('國會',parliament,parliamentLevel)}${limitCard('《臨時約法》／制度規則',rules,rulesLevel)}</div></div>`}
+function start(){set(card('fact','已核證史實','1912｜你成為民國總統',`
+<p>辛亥革命後，清帝退位，中華民國成立。袁世凱其後出任臨時大總統。</p>
+<div class="context">你掌握北洋軍等重要力量，但新的共和制度亦設有<b>國會</b>、《臨時約法》等安排。你雖然是總統，仍然有人和制度可以限制你的政治行動。</div>
+<p><b>你有權力，但仍然有人和制度可以限制你。</b></p>
+<div class="prompt">課堂筆記第2頁：在「1912 開局」一行評估權力掌握度 ★★★★★。</div>
+<p class="mini">遊戲中的選擇與後果屬反事實模擬，不等於真實歷史；袁世凱的真實路線會另外顯示。遊戲沒有勝負或道德分數。</p>${next('進入1913年','eventSong()')}`),0)}
+function eventSong(){set(card('event','已核證史實','突發事件｜國會與宋教仁',`
+<p>國民黨在國會選舉中取得重要優勢。宋教仁主張透過議會及責任內閣，使政府受到國會制衡。</p>
+<p>1913年3月，<b>宋教仁遇刺身亡</b>。事件令本來緊張的政治關係進一步惡化。</p>
+<div class="context"><b>爭議提示：</b>宋教仁案的幕後責任存在不同歷史解釋，不能把「袁世凱下令刺殺」當作已確定史實。</div>
+<p><b>你沒有選擇這件事發生，但你的政治環境已經改變。</b></p>${next('進入 Decision 1','d1()')}`),1)}
+function d1(){beginDecision('D1');set(card('sim','反事實模擬','Decision 1｜善後大借款',`
+<p><b>歷史背景：</b>民國初年，中央政府財政困難，需要大量資金維持政府運作及軍政開支。1913年，政府準備向五國銀行團借款2,500萬英鎊。</p>
+<p>袁亦希望利用資金擴充軍政力量、鞏固中央及個人勢力。因此，這不只是一般政府周轉問題。</p>
+<p>但《臨時約法》下，國會本來有權參與公債、預算及涉及國庫的重大事項。國會因此反對政府在未獲批准前完成這筆巨額借款。</p>
+<div class="context"><b>你現在手上的問題</b><br><b>等國會：</b>程序較完整，但取得資金可能較慢。<br><b>不等國會：</b>可以較快取得資金，但會削弱國會在重大財政決定中的作用。</div>
+<div class="prompt">作出選擇後，返回課堂筆記第2頁記錄D1。</div>
+${choice('A','先交國會審議','接受程序與協商時間，等國會批准。','pickD1')}${choice('B','修改方案再談','調整借款規模或條件，換取國會支持。','pickD1')}${choice('C','直接完成借款','不等國會批准，盡快取得資金。','pickD1')}`),2)}
+function pickD1(x){S.d1=x;let done='',later='';if(x==='A'){S.resources-=1;S.checks+=1;S.control-=1;S.conflict-=1;done='國會仍然參與重大借款決定；政府依照制度程序處理借款。';later='國會仍保持較強的實際作用。如果之後想進一步削弱制度限制，在本模擬中面對的阻力會較大。'}if(x==='B'){done='借款與國會協商之間暫時保留空間，政府仍有機會取得部分所需資金。';later='國會與政府的權力分歧仍未完全解決。之後採取重大行動，仍需要處理制度及政治協商。'}if(x==='C'){S.resources+=2;S.control+=1;S.checks-=1;S.conflict+=2;done='你較直接取得大筆資金，可以增加中央政府的軍政資源。';later='國會的反對沒有阻止政府完成這項重大決定。之後再繞過國會採取行動，在本模擬中會比開局時容易。'}S.log.push(['善後大借款',x]);set(card('sim','你的模擬結果','D1 後果',`${consequence(done,later)}${limitsPanel()}<div class="prompt">工作紙 D1：自己評權力掌握度 ★★★★★，再寫一項證據。</div><p class="mini"><b>真實歷史另外顯示：</b>袁實際在國會反對下完成善後大借款。</p>${next('帶着新條件前進','d2()')}`),2)}
+function d2Intro(){if(S.d1==='A')return '你讓國會參與借款，沒有再因借款程序增加一層直接衝突；國會亦保持實際作用。但中央與國民黨原有的矛盾仍在。';if(S.d1==='B')return '借款問題仍留下協商空間，但中央政府與國民黨的政治分歧並未消失。';return '你較快取得中央軍政資源；同時，未經國會同意借款令政府與國會、國民黨的政治衝突加深。借款不是之後衝突的唯一原因，但它改變了中央的資源與互信條件。';}
+function d2Resistance(){return S.d1==='A'?'高':S.d1==='C'?'較低':'中'}
+function d2(){beginDecision('D2');set(card('sim','反事實模擬','Decision 2｜國民黨籍都督',`
+<div class="context"><b>上一個決定留下的局勢：</b>${d2Intro()}</div>
+<div class="resistance">目前處理地方政治力量的阻力：${d2Resistance()}</div>
+<p><b>歷史背景：</b>國民黨的力量不只在國會，也在部分地方省份。宋教仁案及善後大借款令袁政府與國民黨的政治矛盾累積、互信下降。三個重要省份由國民黨籍都督掌握，中央不能完全控制地方；但此時三人並未共同起兵。</p>
+<div class="people"><div class="person"><b>李烈鈞｜江西</b>掌握省內軍政力量</div><div class="person"><b>柏文蔚｜安徽</b>掌握省內軍政力量</div><div class="person"><b>胡漢民｜廣東</b>國民黨重要人物，掌握地方政治力量</div></div>
+<p>保留三人，國民黨仍掌握地方力量；直接撤換他們，則可能把原有政治矛盾推向更激烈的衝突。</p>
+<div class="question">你會點處理三名國民黨籍都督？</div><div class="prompt">作出選擇後，返回課堂筆記第2頁記錄D2。</div>
+${choice('A','暫時留任三人','繼續透過政治談判處理中央與地方矛盾。','pickD2')}${choice('B','個別撤換','只撤換與中央衝突最嚴重者。','pickD2')}${choice('C','罷免三名都督','直接削弱國民黨在地方的政治力量。','pickD2')}`),3)}
+function pickD2(x){S.d2=x;let done='',later='';if(x==='A'){S.local+=2;S.control-=1;S.conflict-=1;done='三名國民黨籍都督暫時留任，地方政治力量仍可在原有位置活動。';later='中央控制地方的能力仍有限。如果之後想大幅削弱其他政治力量，在本模擬中需要面對較多阻力。'}if(x==='B'){S.control+=1;S.local-=1;S.conflict+=1;done='中央撤換部分地方力量，增加了對部分地區的控制。';later='其他地方力量開始擔心中央會否繼續撤換不合作者；中央控制增加，地方戒心亦上升。'}if(x==='C'){S.control+=2;S.local-=2;S.conflict+=2;done='你直接削弱國民黨在三個省份的地方政治力量。';later='政治對手在原有位置活動的空間減少。你之後再處理其他政治限制，在本模擬中較有條件推行，但衝突升級風險亦增加。'}if(S.d1==='C'&&x==='C')later+=' 你之前亦已直接取得較多中央資金，兩步累積令中央的行動條件進一步增強。';if(S.d1==='A'&&x==='A')later+=' 你連續保留國會及地方政治力量，下一步若想集中權力，面對的限制仍較完整。';S.log.push(['國民黨籍都督',x]);set(card('sim','你的模擬結果','D2 後果',`${consequence(done,later)}${limitsPanel()}<div class="prompt">工作紙 D2：自己評權力掌握度 ★★★★★，再寫一項證據。</div><p class="mini">以上是反事實模擬；二次革命不會被寫成任何模擬選項的必然結果。</p>`)+card('event','真實歷史中的袁世凱','真實歷史｜罷免都督之後',`
+<p>袁實際罷免李烈鈞、柏文蔚、胡漢民。李烈鈞其後在江西起兵討袁，其他省份亦有響應，形成「二次革命」。袁軍最後擊敗討袁力量。</p>
+<div class="context"><b>你的路：</b>D2 選 ${S.d2}<br><b>袁實際：</b>C｜罷免三人 <span class="arrow">→</span> 李烈鈞起兵、多省響應 <span class="arrow">→</span> 二次革命失敗</div>
+<div class="question">去到下一幕，袁面對的主要武力反對，比以前增加還是減少？</div>
+<div class="prompt">課堂筆記第2頁：在「二次革命後」一行記錄真實事件，再評權力掌握度 ★★★★★。</div>${next('進入 Decision 3','d3()')}`),3)}
+function revolution(){set(card('event','真實歷史中的袁世凱','1913｜二次革命',`
+<p><b>暫停你的模擬路線。</b>以下是真實歷史，不是把所有玩家路線硬接成同一結果。</p>
+<p>袁實際罷免李烈鈞、柏文蔚、胡漢民。李烈鈞其後在江西起兵討袁，其他省份亦有響應，形成「二次革命」。</p>
+<p>討袁力量最後被北洋軍擊敗，二次革命失敗。主要武力反對力量受到削弱。</p>
+<div class="context"><b>你的路：</b>D2 選 ${S.d2}<br><b>袁實際：</b>C｜撤換三名都督 <span class="arrow">→</span> 二次革命 <span class="arrow">→</span> 袁軍勝</div>
+<div class="question">去到下一幕，袁面對的主要武力反對，比以前增加還是減少？</div><div class="prompt">課堂筆記第2頁：在「二次革命後」一行記錄真實事件，再評權力掌握度 ★★★★★。</div>${next('繼續你的模擬路線','d3()')}`),3)}
+function d3Intro(){let t=S.control>=2?'你前兩步已取得較多中央資源，亦削弱部分地方政治對手。':S.control<=-1?'你前兩步一直保留較多政治協商和地方力量。':'你的中央控制有所增加，但其他政治力量仍然存在。';t+=S.conflict>=3?' 政治對立亦已明顯升高。':' 反對仍有較多制度內表達空間。';return t}
+function d3Resistance(){return S.control>=2?'較低':S.control<=0?'高':'中'}
+function feasibility(){const r=d3Resistance(),cls=r==='較低'?'easy':r==='高'?'hard':'mid';return `<span class="chip ${cls}">處理國會的目前阻力：${r}</span>`}
+function d3(){beginDecision('D3');set(card('sim','反事實模擬','Decision 3｜國會仲留唔留？',`
+<div class="context"><b>你目前的模擬條件：</b>${d3Intro()}<div class="status">${feasibility()}</div></div>
+${limitsPanel()}
+<p><b>歷史背景：</b>二次革命失敗後，反袁的主要武力力量受到重大打擊，袁的政治地位進一步增強。</p>
+<p>但國會仍然存在。它參與通過法律，審議政府預算、公債及涉及國庫的重要事項。只要國會仍能行使這些權力，總統便不能完全單方面決定國家大事。</p>
+<div class="context"><b>國會可以影響：</b>法律｜政府預算｜公債／借款｜重大國庫事項</div>
+<div class="question">武力上的主要反對已被削弱，但制度上的限制仍然存在。你會點做？</div><div class="prompt">作出選擇後，返回課堂筆記第2頁記錄D3。</div>
+${choice('A','保留國會','接受法律、預算及政治決定仍要經國會。','pickD3')}${choice('B','限制國會影響','保留國會形式，但削弱它阻礙政府的能力。','pickD3')}${choice('C','解散國會','移除這個主要的制度限制。','pickD3')}`),4)}
+function pickD3(x){S.d3=x;const strong=S.control>=2;let done='',later='';if(x==='A'){S.checks+=2;S.control-=1;S.conflict-=1;done='國會繼續參與法律、預算、公債及其他重大國家決定。';later=strong?'你此前已有較強中央條件，但今次仍保留國會。下一步若要改變制度規則，仍要面對國會這項實際限制。':'你前面保留的地方與政治力量仍較完整，國會亦繼續發揮作用。下一步大幅改變制度規則的阻力較大。'}if(x==='B'){S.checks-=1;S.control+=1;done='國會仍然存在，但限制總統施政的能力受到削弱。';later=strong?'你前面已有較強中央條件，今次再削弱國會。下一步修改制度規則所受的即時阻力進一步下降。':'其他政治力量仍較完整，所以削弱國會仍面對阻力；但下一步改變制度規則已比保留完整國會容易。'}if(x==='C'){S.checks-=3;S.control+=2;S.conflict+=1;if(strong){done='你解散國會，移除了可以審議法律、預算及公債的重要政治機構。';later='你前面已削弱部分政治限制，因此今次面對的即時阻力較少。下一步改變制度規則，在本模擬中比開局時容易。'}else{done='你嘗試解散國會，移除這項制度限制。';later='你之前保留了較多政治協商和地方力量，因此今次大幅削弱國會面對較大阻力；想集中權力，不代表已有足夠條件做到。'}}S.log.push(['國會',x]);set(card('sim','你的模擬結果','D3 後果',`${consequence(done,later)}${limitsPanel()}<div class="prompt">課堂筆記 D3：記錄三項限制目前的狀態，再評權力掌握度。</div><p class="mini"><b>真實歷史另外顯示：</b>袁其後解散國會。</p>${next('進入 Decision 4','d4()')}`),4)}
+
+function sourceTask2(){set(card('fact','已核證史實','史料任務｜1912 → 1914，袁「擴權」擴咗乜？',`
+<div class="checkpoint"><b>史料核證</b>請轉到課堂筆記第3頁，完成「史料任務一」。</div>
+<p>閱讀1912《臨時約法》及1914制度安排史料，再整理立法機關、總統權力及制度限制有甚麼改變。</p>
+<p>完成比較表及兩個權力掌握度評級後，才進入1915年的帝制嘗試。</p>${next('我完成了，進入1915','imperialScene()')}`),5)}
+function d4Intro(){let t='';if(S.d3==='C')t='你已嘗試移除國會這個政治機構；但限制總統的成文規則仍然存在。';else if(S.d3==='A')t='你保留了國會；《臨時約法》仍規定總統、內閣與國會之間的權力關係。';else t='國會仍在，但實際影響已下降；下一個問題是原有憲政規則本身。';const concentrated=[S.d1,S.d2,S.d3].filter(x=>x==='C').length;if(concentrated>=2)t+=' 你前面已多次削弱政治限制，今次改變規則的即時阻力較少。';if(concentrated===0)t+=' 你前面一直保留較多政治及制度力量，今次大幅改變規則會面對較多阻力。';return t}
+function d4Resistance(){const c=[S.d1,S.d2,S.d3].filter(x=>x==='C').length;return c>=2?'較低':c===0?'高':'中'}
+function d4(){beginDecision('D4');set(card('sim','反事實模擬','Decision 4｜《臨時約法》仲留唔留？',`
+<div class="context"><b>上一個決定留下的局勢：</b>${d4Intro()}</div>
+<div class="resistance">目前改變制度規則的阻力：${d4Resistance()}</div>
+${limitsPanel()}
+<p>你前面處理的是人物和政治機構。今次不一樣。</p>
+<p>《臨時約法》代表的是一套即使掌權者不喜歡，也要遵守的制度規則。1912年的安排把重要權力分散於總統、國會等機關；如果重新制定規則，總統可以爭取更多直接權力。</p>
+<div class="question">今次沒有一個突然出現的敵人。當你已經掌握更大政治力量，原本限制總統的規則，仲應唔應該留低？</div><div class="prompt">作出選擇後，返回課堂筆記第2頁記錄D4，並寫「我最重視」。</div>
+${choice('A','保留原有《臨時約法》','即使自己已有較強政治力量，仍接受原有制度限制。','pickD4')}${choice('B','修改部分規則','增加總統權力，但保留部分制度限制。','pickD4')}${choice('C','廢除／取代原有安排','建立一套令總統擁有更大權力的新制度。','pickD4')}`),5)}
+function pickD4(x){S.d4=x;const strong=S.control>=3;let done='',later='';if(x==='A'){S.checks+=2;S.control-=1;done='你保留原有《臨時約法》，讓制度規則繼續限制掌權者，包括限制自己。';later=strong?'雖然你前面已累積較強政治力量，原有制度限制仍然存在。進一步改變政體仍須面對這些規則。':'你一路保留較多政治及制度限制，模擬中的1915仍與袁的集中權力路線有明顯差別。'}if(x==='B'){S.checks-=1;S.control+=1;done='你修改部分規則，令總統可以更直接處理部分國家事務。';later=strong?'你前面已削弱若干限制，今次再增加總統權力；但部分制度限制仍未消失。':'你仍保留較多原有政治力量，因此修改規則面對較大阻力，部分限制亦繼續存在。'}if(x==='C'){S.checks-=3;S.control+=2;S.conflict+=1;done='你取代原有安排，不只是削弱一個政治對手，而是改變掌權者受到甚麼規則限制。';later=strong?'由1912開始存在的多項政治及制度限制已逐步削弱；進一步改變政體，在本模擬中比開局時更有條件推行。':'你前面保留較多政治及制度力量，因此大幅取代原有安排面對較大的政治與制度阻力。'}S.log.push(['《臨時約法》',x]);set(card('sim','你的模擬結果','D4 後果',`${consequence(done,later)}${limitsPanel()}<div class="prompt">課堂筆記 D4：記錄三項限制目前的狀態、評權力掌握度，並寫「我最重視」。</div>${next('完成課堂筆記第3頁史料任務','sourceTask2()')}`),5)}
+const label={d1:{A:'交國會審議',B:'與國會重新協商',C:'直接完成借款'},d2:{A:'暫時留任三人',B:'個別撤換',C:'罷免三名都督'},d3:{A:'保留國會',B:'削弱國會影響',C:'解散國會'},d4:{A:'保留原有《臨時約法》',B:'修改部分規則',C:'廢除／取代原有安排'}};
+function row(n,key,yuan,after){return `<div class="row"><b>${n}</b><br>你選：<b>${S[key]}｜${label[key][S[key]]}</b><br>袁實際：<b>C｜${yuan}</b>${after?`<br><span class="mini">${after}</span>`:''}</div>`}
+function routeSummary(){const c=[S.d1,S.d2,S.d3,S.d4].filter(x=>x==='C').length;if(c>=3)return '你的路線多次以增加中央控制或減少制度限制來處理眼前問題。即時行動空間增加，但下一步的政治條件亦逐步被改變。';if(c===0)return '你的路線較多保留協商、國會或原有制度限制。政府未必能最快處理所有問題，但制度內政治空間較完整。';return '你的路線在協商與集中權力之間擺動。前一步留下的資源、對立與制度條件，改變了後一步的可行性。'}
+function concentrationCount(){return [S.d1,S.d2,S.d3,S.d4].filter(x=>x==='C').length}
+function condition1915(){const c=concentrationCount();if(c>=3)return '原本限制總統的多項力量已被削弱，中央亦累積較多資源和行動空間。';if(c<=1)return '地方政治力量、國會或制度規則仍有較多實際作用，中央不能單方面改變政體。';return '部分限制已被削弱，但仍有政治及制度力量可以阻礙改變政體。'}
+function resistance1915(){const c=concentrationCount();return c>=3?'較低':c<=1?'高':'中'}
+function imperialScene(){beginDecision('1915');set(card('fact','已核證史實','史料結論｜袁的真實制度路線',`
+<p>資料顯示，由1912到1914，立法機關的作用下降，總統可直接行使的權力增加，對總統的制度限制亦減少。</p>
+<div class="context"><b>真實歷史：</b>袁廢除原《臨時約法》，頒布《中華民國約法》，擴大總統權力。</div>`)+card('sim','反事實模擬','1915｜最後一步：如果現在進一步改變政體……',`
+<p>你已走過四個決定。這次沒有 A／B／C：先看看前面每一步留下的條件，再嘗試把共和改為帝制。</p>
+<div class="context"><b>你目前的條件：</b>${condition1915()}</div>${limitsPanel()}
+<div class="resistance">【推行帝制】目前阻力：${resistance1915()}</div>
+<div class="question">同一個人、同一個目標，為甚麼1912與1915的可行性會不同？</div>
+<button class="next attempt" onclick="handleEmpireAttempt()">嘗試推行帝制</button>`),6)}
+function attemptEmpire(){const c=concentrationCount();let body='';if(c>=3){body=`<div class="attempt-result attempt-success">嘗試結果：成功</div><div class="outcome"><h3>你成功作出並推動改變政體的決定</h3><p>你前面已取得較多中央資源，並逐步削弱地方力量、國會或制度規則。眼前可直接阻止你的力量較少。</p><p><b>但成功作出決定，不代表其他政治力量會接受。</b></p></div>`}else if(c<=1){body=`<div class="attempt-result attempt-failure">嘗試結果：失敗</div><div class="outcome"><h3>你未能在現有條件下順利推行帝制</h3><p>地方政治力量、國會或原有制度規則仍有較多實際作用。反對者仍有組織、否決或阻礙改變的空間。</p><p><b>想推行帝制，不等於已有足夠條件做到。</b></p></div>`}else{body=`<div class="attempt-result attempt-partial">嘗試結果：初步成功，但推行受阻</div><div class="outcome"><h3>你作出改變政體的決定，但未能順利落實</h3><p>部分限制已削弱，所以比1912年較容易；但仍有政治及制度力量可以阻礙或反對。</p><p><b>你能夠宣布改變，不代表已控制推行結果。</b></p></div>`}set(card('sim','你的模擬結果','帝制嘗試｜前面的決定成為今天的條件',`${body}${limitsPanel()}<div class="question">寫在工作紙：為甚麼同一件事，在1912與1915的難度會不同？</div><p class="mini">以上只是根據你四次選擇形成的反事實模擬，不是聲稱歷史必然如此。</p>${next('查看袁世凱的真實路線','finalHistory()')}`),7)}
+function finalHistory(){set(card('fact','已核證史實','我的路 vs 袁世凱真實路線',`
+<div class="checkpoint"><b>課堂筆記已完成</b>以下路線比較留在遊戲畫面進行，不用再抄寫。</div>
+<div class="two"><div class="compare"><h3>逐項對照 A B C</h3>${row('D1 善後大借款','d1','未經國會同意完成善後大借款','')}${row('D2 地方都督','d2','罷免李烈鈞、柏文蔚、胡漢民','二次革命 → 袁軍獲勝')}${row('D3 國會','d3','解散國會','')}${row('D4 《臨時約法》','d4','廢除原《臨時約法》，另訂新的制度安排','總統權力擴大')}</div><div class="compare"><h3>你的模擬路線</h3><p>${routeSummary()}</p><p><b>袁四次真實選擇有沒有一個共同方向？</b></p><p><b>每一步又令下一步的甚麼條件改變？</b></p><p class="mini">沒有勝負或道德分數。請整理權力如何一步步集中。</p></div></div>
+<div class="context"><b>袁實際走過的路線：</b><br>善後大借款 <span class="arrow">→</span> 與國民黨及地方政治力量的衝突加深 <span class="arrow">→</span> 罷免國民黨籍都督 <span class="arrow">→</span> 二次革命失敗、主要武力反對受挫 <span class="arrow">→</span> 解散國會 <span class="arrow">→</span> 改變《臨時約法》及原有制度安排 <span class="arrow">→</span> 總統權力進一步集中 <span class="arrow">→</span> 1915走向帝制</div>
+<p class="mini">這條路線顯示政治條件逐步改變，不代表袁在1912年已經有一套完整稱帝計劃。</p>
+<h3>真實歷史揭示｜帝制與護國反抗</h3><p>真實歷史中，袁世凱其後進一步走向帝制。1915年出現支持恢復帝制的活動，袁接受帝制安排。</p>
+<p>但權力增加並沒有令所有政治反對消失。蔡鍔、唐繼堯等在雲南發動護國運動，多省響應；袁最終取消帝制。</p>
+<div class="question"><b>全班收束①：</b>袁為甚麼不是「突然」稱帝？引用兩個Decision。<br><br><b>全班收束②：</b>權力已經增加，為甚麼帝制最後仍然失敗？</div>
+<h3>最後整理</h3><p>前一步的選擇，會改變下一步的資源、反對力量及制度限制。袁可以令自己更有能力作出某些政治決定；但有能力做到，不代表其他政治力量一定接受。</p><div class="context"><b>最後只問：</b>我今次咁做，會令下一次咩變得更容易／更難？</div><p><b>做到 ≠ 控制得到所有後果。</b></p><button class="next" onclick="restart()">換一條路再玩</button>`),8)}
+function d2CarryEffect(){if(S.d1==='A')return '你在D1保留了國會的實際作用，所以中央目前仍面對較多制度及政治限制。';if(S.d1==='C')return '你在D1已較直接取得大筆資金，而國會反對未能阻止借款；中央可運用的條件比開局時有利。';return '你在D1保留了協商空間；中央資源與制度限制都沒有被完全移除。'}
+const basePickD1=pickD1;
+pickD1=function(x){basePickD1(x);app.innerHTML=app.innerHTML.replace('<div class="prompt">工作紙 D1：自己評權力掌握度 ★★★★★，再寫一項證據。</div>','<div class="checkpoint"><b>請返回課堂筆記第2頁</b>①圈D1選擇；②參考下方三個狀態格，把地方／國會／規則目前狀態寫入三格；③評D1後權力掌握度 ★★★★★。</div><div class="stop"><b>全班停一停</b><br>請留在這一頁，望住自己的選擇後果，等老師指示後再前進。</div>').replace('帶着新條件前進','老師指示後，進入 Decision 2')}
+const basePickD2=pickD2;
+pickD2=function(x){basePickD2(x);app.innerHTML=app.innerHTML.replace('<h2>D2 後果</h2>',`<h2>D2 後果</h2><div class="context"><b>D1留下的條件：</b>${d2CarryEffect()}<br><b>今次行動的起始阻力：</b>${d2Resistance()}</div>`).replace('<div class="prompt">工作紙 D2：自己評權力掌握度 ★★★★★，再寫一項證據。</div>','<div class="checkpoint"><b>請返回課堂筆記第2頁</b>①圈D2選擇；②參考下方三個狀態格，把地方／國會／規則目前狀態寫入三格；③評D2後權力掌握度 ★★★★★。</div>')}
+const basePickD3=pickD3;
+pickD3=function(x){basePickD3(x);app.innerHTML=app.innerHTML.replace('<div class="prompt">課堂筆記 D3：記錄三項限制目前的狀態，再評權力掌握度。</div>','<div class="checkpoint"><b>請返回課堂筆記第2頁</b>①圈D3選擇；②參考下方三個狀態格，把地方／國會／規則目前狀態寫入三格；③評D3後權力掌握度 ★★★★★。</div>')}
+const basePickD4=pickD4;
+pickD4=function(x){basePickD4(x);app.innerHTML=app.innerHTML.replace('<div class="prompt">課堂筆記 D4：記錄三項限制目前的狀態、評權力掌握度，並寫「我最重視」。</div>','<div class="checkpoint"><b>請返回課堂筆記第2頁</b>①圈D4選擇；②參考下方三個狀態格，把地方／國會／規則目前狀態寫入三格；③評D4後權力掌握度 ★★★★★；④寫「我最重視」。</div>')}
+function handleEmpireAttempt(){const previous=snapshotState(),time=decisionTime(),resistance=resistance1915();attemptEmpire();recordEvent('imperial_attempt','1915','ATTEMPT',previous,snapshotState(),resistance,'in_progress',time);app.innerHTML=app.innerHTML.replace('onclick="finalHistory()"','onclick="completeAndReveal()"').replace('<div class="question">寫在工作紙：',`<div class="checkpoint"><b>決策記錄及史料任務已完成</b>現在只需閱讀帝制嘗試結果，不用再填表。</div><div class="question">想一想：`)}
+function completeAndReveal(){if(!completionSent){completionSent=true;recordEvent('completion','END','',snapshotState(),snapshotState(),resistance1915(),'complete',0)}finalHistory()}
+function end(){completeAndReveal()}
+function restart(){Object.assign(S,{d1:null,d2:null,d3:null,d4:null,resources:0,control:0,checks:2,conflict:0,local:1,log:[]});completionSent=false;start()}
+function boot(){window.addEventListener&&window.addEventListener('online',flushQueue);if(isTeacherMode())teacherScreen();else identityScreen();flushQueue()}
+boot();
+</script></body></html>
